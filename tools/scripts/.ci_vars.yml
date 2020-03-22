@@ -1,0 +1,12 @@
+# These CI Variables are needed in order to use this submodule properly
+
+docker_hub:
+  - DOCKER_PASSWORD
+  - DOCKER_USERNAME
+  - DOCKER_REPO - Usually Same as the Username
+  - DOCKER_NAME - Container Name
+
+git_hub:
+  - GIT_EMAIL
+  - GIT_TOKEN
+  - GIT_USERNAME

@@ -1,0 +1,36 @@
+#
+# Travis CI recipe to build, test and push docker images to the Docker Hub.
+#
+
+language: generic
+
+os:
+  - linux
+
+services:
+  - docker
+
+git:
+  submodules: false
+
+jobs:
+  include:
+  - stage: Alpine Container
+    script:
+      - git submodule update --init --remote
+      - |
+        tools/build/build_container.sh \
+        --envfile versions/alpine-3.10.env \
+        --envfile versions/docker-test-framework.env \
+        --build \
+        --pushdr
+
+  - stage: Git Tag & Docker Hub README
+    script: 
+      - git submodule update --init --remote
+      - |
+        tools/build/build_container.sh \
+        --envfile versions/docker-test-framework.env \
+        --pushgt \
+        --pushrm
+
