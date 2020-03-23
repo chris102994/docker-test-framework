@@ -1,5 +1,5 @@
+PyGithub
 requests
 selenium
 docker
 jinja2
-github3.py
