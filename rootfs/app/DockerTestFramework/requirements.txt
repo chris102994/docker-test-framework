@@ -2,5 +2,3 @@ requests
 selenium
 docker
 jinja2
-github
-pygit2

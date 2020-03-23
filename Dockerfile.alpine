@@ -15,8 +15,9 @@ COPY rootfs/ /
 RUN	echo "##### Downloading Runtime Packages #####" && \
 		inst-pkg \
 			python3 \
+			py3-pygit2 \
 			docker \
 			chromium-chromedriver && \
 	echo "##### Downloading pip Packages #####" && \
-		python3 -m pip install -r /app/DockerTestFramework/requirements.txt && \
+		python3 -m pip install -r /app/DockerTestFramework/requirements.txt
 ENTRYPOINT ["/app/dtf-wrapper.sh"]
