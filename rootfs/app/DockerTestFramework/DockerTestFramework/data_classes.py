@@ -28,7 +28,7 @@ class ENVars:
     def __init__(self):
         self.docker_repo = os.getenv(key='DOCKER_REPO')
         self.docker_name = os.getenv(key='DOCKER_NAME')
-        self.docker_tags = os.getenv(key='TAGS', default='latest').replace(' ', '').split(',')
+        self.docker_tags = os.getenv(key='TAGS', default='latest').split(' ')
         self.docker_tag = ''
         self.env_vars = os.getenv(key='ENV_VARS', default=None)
         if self.env_vars is not None:
