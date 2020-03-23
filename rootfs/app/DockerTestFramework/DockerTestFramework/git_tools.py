@@ -4,13 +4,13 @@ GitHub Push tools
 
 import os
 from DockerTestFramework.data_classes import ENVars
-from github import Github, GithubException
+from github3 import GitHub, GitHubError
 
 
 class GitTools:
     commit_message: str
     data: ENVars
-    git_session: Github
+    git_session: GitHub
     file_list: []
 
     def __init__(self, data: ENVars = None):
@@ -18,7 +18,7 @@ class GitTools:
             raise Exception('SeleniumTools Should not be called without ENVars object as the argument.')
         else:
             self.data = data
-        self.git_session = Github(self.data.git_username, self.data.git_token)
+        self.git_session = GitHub(self.data.git_username, self.data.git_token)
         self.git_repo = self.git_session.get_user().get_repo('chris102994.github.io')
         self.file_list = os.listdir(self.data.out_dir)
         self.file_list[:] = ['containers/{}/{}/{}'.format(self.data.docker_name, self.data.git_version, file) for file in self.file_list]
@@ -36,7 +36,7 @@ class GitTools:
                     message='Start tracking {!r}'.format(file),
                     content=contents
                 )
-            except GithubException:
+            except GitHubError:
                 print('File {} exists. Updating.'.format(file))
                 sha = self.git_repo.get_contents(path=file).sha
                 self.git_repo.update_file(

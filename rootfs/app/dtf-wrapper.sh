@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/usr/bin/python3.7 /app/DockerTestFramework/DockerTestFramework/__init__.py
+/usr/bin/python3.6 /app/DockerTestFramework/DockerTestFramework/__init__.py
