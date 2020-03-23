@@ -20,7 +20,7 @@ jobs:
       - git submodule update --init --remote
       - |
         tools/build/build_container.sh \
-        --envfile versions/alpine-3.10.env \
+        --envfile versions/ubuntu-18.env \
         --envfile versions/docker-test-framework.env \
         --build \
         --pushdr
