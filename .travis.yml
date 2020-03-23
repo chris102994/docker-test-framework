@@ -15,7 +15,7 @@ git:
 
 jobs:
   include:
-  - stage: Alpine Container
+  - stage: Ubuntu Container
     script:
       - git submodule update --init --remote
       - |
