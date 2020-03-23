@@ -22,7 +22,7 @@ class GitTools:
         self.git_session = Github(self.data.git_username, self.data.git_token)
         self.git_repo = self.git_session.get_user().get_repo('chris102994.github.io')
         self.file_list = os.listdir(self.data.out_dir)
-        self.file_list[:] = ['containers/{}/{}/{}'.format(self.data.docker_name, self.data.git_version, file) for file in self.file_list]
+        self.file_list[:] = ['{}/{}'.format(self.data.git_dir, file) for file in self.file_list]
         self.commit_message = 'CI Update of {} tag {}'.format(self.data.docker_name, self.data.git_version)
 
     def update_ci_repo(self):
