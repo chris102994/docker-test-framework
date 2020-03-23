@@ -16,6 +16,7 @@ RUN	echo "##### Downloading Runtime Packages #####" && \
 		inst-pkg \
 			python3 \
 			python3-pip \
+			python3-setuptools \
 			docker \
 			chromium-chromedriver && \
 	echo "##### Downloading pip Packages #####" && \
