@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.com/chris102994/docker-test-framework.svg?branch=master)](https://travis-ci.com/chris102994/docker-test-framework)
 [![Microbadger Size & Layers](https://images.microbadger.com/badges/image/christopher102994/docker-test-framework.svg)](https://microbadger.com/images/christopher102994/docker-test-framework "Get your own image badge on microbadger.com")
 [![Image Pulls](https://img.shields.io/docker/pulls/christopher102994/docker-test-framework)](https://hub.docker.com/repository/docker/christopher102994/docker-test-framework)
- [![Ubuntu](https://images.microbadger.com/badges/version/christopher102994/docker-test-framework:ubuntu-18-latest.svg)](https://microbadger.com/images/christopher102994/docker-test-framework:ubuntu-18-latest "Get your own version badge on microbadger.com")
+ [![Ubuntu](https://images.microbadger.com/badges/version/christopher102994/docker-test-framework:latest.svg)](https://microbadger.com/images/christopher102994/docker-test-framework:latest "Get your own version badge on microbadger.com")
 
 
 
