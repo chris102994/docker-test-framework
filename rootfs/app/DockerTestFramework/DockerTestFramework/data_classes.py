@@ -40,7 +40,7 @@ class ENVars:
         self.ip = os.getenv(key='IP', default='0.0.0.0')
         self.port = os.getenv(key='PORT', default='5700')
         self.pwd = os.path.dirname(os.path.realpath(__file__))
-        self.out_dir = '/containers/{}/{}'.format(self.docker_name, self.git_version)
+        self.out_dir = 'containers/{}/{}'.format(self.docker_name, self.git_version)
         self.ssl = os.getenv(key='SSL', default='False').lower()
         if 'true' in self.ssl:
             self.protocol = 'https'

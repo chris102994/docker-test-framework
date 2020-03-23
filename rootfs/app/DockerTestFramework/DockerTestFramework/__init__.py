@@ -10,6 +10,8 @@ def main():
     data.setup_output_dir()
 
     for tag in data.docker_tags:
+        if len(tag.strip()) == 0:
+            continue
         try:
             data.set_tag(tag)
             '''Docker Setup'''
