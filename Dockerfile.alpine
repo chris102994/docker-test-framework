@@ -20,4 +20,5 @@ RUN	echo "##### Downloading Runtime Packages #####" && \
 			chromium-chromedriver && \
 	echo "##### Downloading pip Packages #####" && \
 		python3 -m pip install -r /app/DockerTestFramework/requirements.txt
+ENV PYTHONPATH=/app/DockerTestFramework/
 ENTRYPOINT ["/app/dtf-wrapper.sh"]
