@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.com/chris102994/docker-test-framework.svg?branch=master)](https://travis-ci.com/chris102994/docker-test-framework)
 [![Microbadger Size & Layers](https://images.microbadger.com/badges/image/christopher102994/docker-test-framework.svg)](https://microbadger.com/images/christopher102994/docker-test-framework "Get your own image badge on microbadger.com")
 [![Image Pulls](https://img.shields.io/docker/pulls/christopher102994/docker-test-framework)](https://hub.docker.com/repository/docker/christopher102994/docker-test-framework)
- [![Alpine](https://images.microbadger.com/badges/version/christopher102994/docker-test-framework:alpine-3.10-latest.svg)](https://microbadger.com/images/christopher102994/docker-test-framework:alpine-3.10-latest "Get your own version badge on microbadger.com")
+ [![Ubuntu](https://images.microbadger.com/badges/version/christopher102994/docker-test-framework:ubuntu-18-latest.svg)](https://microbadger.com/images/christopher102994/docker-test-framework:ubuntu-18-latest "Get your own version badge on microbadger.com")
 
 
 
@@ -15,8 +15,8 @@
 ```
 docker run \
 	--name=docker-test-framework \
-	-e DOCKER_NAME="myname" \
-	-e DOCKER_REPO="docker-test-framework" \
+	-e DOCKER_NAME="docker-test-framework" \
+	-e DOCKER_REPO="myname" \
 	-e ENV_VARS="THIS=THAT,X=Y" \
 	-e GIT_EMAIL="myemail@server.com" \
 	-e GIT_TOKEN="mysupersecrettoken" \
@@ -24,7 +24,7 @@ docker run \
 	-e GUI="true" \
 	-e SSL="false" \
 	-e PORT="5700" \
-	-e TAGS="latest, alpine-3.10-latest" \
+	-e TAGS="latest, ubuntu-18-latest" \
 	-v /var/run/docker.sock:/var/run/docker.sock \
 	--restart unless-stopped \
 	christopher102994/docker-test-framework:latest
