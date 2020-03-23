@@ -18,7 +18,7 @@ class GitTools:
             raise Exception('SeleniumTools Should not be called without ENVars object as the argument.')
         else:
             self.data = data
-        self.git_session = GitHub(self.data.git_username, self.data.git_token)
+        self.git_session = GitHub(username=self.data.git_username, token=self.data.git_token)
         self.git_repo = self.git_session.get_user().get_repo('chris102994.github.io')
         self.file_list = os.listdir(self.data.out_dir)
         self.file_list[:] = ['containers/{}/{}/{}'.format(self.data.docker_name, self.data.git_version, file) for file in self.file_list]
@@ -45,6 +45,4 @@ class GitTools:
                     content=contents,
                     sha=sha
                 )
-
         print('Finished Updating CI report on github.')
-        pass
