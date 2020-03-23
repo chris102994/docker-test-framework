@@ -11,7 +11,6 @@ from DockerTestFramework.data_classes import ENVars
 class DockerTools:
     data: ENVars
     client: None
-    container: None
     logs: str
 
     def __init__(self, data: ENVars = None):
@@ -36,6 +35,9 @@ class DockerTools:
                                                     ports={'{}/tcp'.format(self.data.port): '{}'.format(
                                                         self.data.port)},
                                                     network='bridge')
+        self.container.reload()
+        self.data.ip = self.container.attrs["NetworkSettings"]["Networks"]["bridge"]["IPAddress"]
+        self.data.endpoint = '{}://{}:{}?autoconnect=true&resize=scale'.format(self.data.protocol, self.data.ip, self.data.port)
         '''Give the Container enough time to setup'''
         time.sleep(60)
         print('Container setup of {} complete.'.format(self.data.image))

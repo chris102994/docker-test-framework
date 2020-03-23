@@ -37,7 +37,7 @@ class ENVars:
         self.git_username = os.getenv(key='GIT_EMAIL')
         self.git_token = os.getenv(key='GIT_TOKEN')
         self.gui = os.getenv(key='GUI', default='true').lower()
-        self.ip = os.getenv(key='IP', default='0.0.0.0')
+        self.ip = '0.0.0.0'
         self.port = os.getenv(key='PORT', default='5700')
         self.pwd = os.path.dirname(os.path.realpath(__file__))
         self.out_dir = 'containers/{}/{}'.format(self.docker_name, self.git_version)
