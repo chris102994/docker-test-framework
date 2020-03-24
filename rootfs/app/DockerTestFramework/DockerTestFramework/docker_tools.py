@@ -74,7 +74,7 @@ class DockerTools:
             'tag': self.data.docker_tag,
             'logs': self.logs,
             'packages': self.packages,
-            'build_version': self.docker_tag
+            'build_version': self.data.docker_tag
         })    
 
     '''
