@@ -32,7 +32,7 @@
 <p>
 
 ```
-{{ container["sysinfo"] }}
+{{ container["packages"] }}
 ```
 
 </p>

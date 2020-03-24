@@ -35,11 +35,13 @@ class DockerTools:
                                                     ports={'{}/tcp'.format(self.data.port): '{}'.format(
                                                         self.data.port)},
                                                     network='bridge')
+        '''Container needs to reload in order to get IP'''
         self.container.reload()
+        '''Set some more variables in data.'''
         self.data.ip = self.container.attrs["NetworkSettings"]["Networks"]["bridge"]["IPAddress"]
-        self.data.endpoint = '{}://{}:{}?autoconnect=true&resize=scale'.format(self.data.protocol, self.data.ip, self.data.port)
+        self.data.endpoint = '{}://{}:{}{}'.format(self.data.protocol, self.data.ip, self.data.port, self.data.web_path)
         '''Give the Container enough time to setup'''
-        time.sleep(60)
+        time.sleep(self.data.docker_sleep)
         print('Container setup of {} complete.'.format(self.data.image))
 
     '''
@@ -47,22 +49,33 @@ class DockerTools:
     '''
     def test_container(self):
         print('Starting the testing of {}.'.format(self.data.image))
-        self.log_docker()
+        self.log_docker_data()
+        self.docker_packages()
         self.test_init_scripts()
         self.test_service_scripts()
         self.test_env_vars()
         print('Finished testing {}.'.format(self.data.image))
 
     '''
-    Simply gather the logs and place it into the test report.
-    Logs are also used for subsequent test's
+    -Gather the logs and place it into the test report.
+        Logs are also used for subsequent test's
+    -Gather installed packages and place them into the test report.
+
     '''
-    def log_docker(self):
+    def log_docker_data(self):
         self.logs = self.container.logs().decode('utf-8')
+        if 'alpine' in self.data.tag:
+            command = 'apk info -v|sort'
+        elif 'debian' in self.data.tag or 'ubuntu' in self.data.tag:
+            command = 'apt list|sort'
+        self.packages = self.container.exec_run(command).decode('utf-8')
+
         self.data.tag_data.append({
             'tag': self.data.docker_tag,
-            'logs': self.logs
-        })
+            'logs': self.logs,
+            'packages': self.packages,
+            'build_version': self.docker_tag
+        })    
 
     '''
     Ensure that the init script's end.
