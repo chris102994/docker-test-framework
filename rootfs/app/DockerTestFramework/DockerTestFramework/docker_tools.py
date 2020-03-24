@@ -64,7 +64,7 @@ class DockerTools:
     def log_docker_data(self):
         self.logs = self.container.logs().decode('utf-8')
         if 'alpine' in self.data.docker_tag:
-            command = 'apk info -v|sort'
+            command = 'apk info -v'
         elif 'debian' in self.data.docker_tag or 'ubuntu' in self.data.docker_tag:
             command = 'apt list'
         self.packages = self.container.exec_run(command)[1].decode('utf-8')
