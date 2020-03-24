@@ -37,6 +37,7 @@ Container specific parameters passed at runtime. The format is `<external>:<inte
 | -------- | -------- |
 | -e DOCKER_NAME | Name of the docker container. |
 | -e DOCKER_REPO | Name of the user the docker container is hosted under. |
+| -e DOCKER_SLEEP | Time to sleep after setting up container testing. (Default=60s) |
 | -e ENV_VARS | Comma separated list of env vars to map to the container being tested. i.e. (THIS=THAT,X=Y) |
 | -e GIT_EMAIL | The email of the git user. |
 | -e GIT_TOKEN | The token for the git user. |
@@ -45,6 +46,7 @@ Container specific parameters passed at runtime. The format is `<external>:<inte
 | -e SSL | (true|false) If a selenium GUI test is performed will it default to http or https protocol. (Default=false) |
 | -e PORT | Port of web-gui for selenium GUI test. (Default=5700) |
 | -e TAGS | A comma separated list of docker tags to test. |
+| -e WEB_PATH | Path after proto://ip:port to open for a screenshot. (noVNC-Default=?autoconnect=true&resize=scale) |
 | -v /var/run/docker.sock:/var/run/docker.sock | Needed for docker-in-docker testing. |
 
 
