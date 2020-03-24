@@ -50,7 +50,6 @@ class DockerTools:
     def test_container(self):
         print('Starting the testing of {}.'.format(self.data.image))
         self.log_docker_data()
-        self.docker_packages()
         self.test_init_scripts()
         self.test_service_scripts()
         self.test_env_vars()
