@@ -30,7 +30,7 @@ class ENVars:
     def __init__(self):
         self.docker_name = os.getenv(key='DOCKER_NAME')
         self.docker_repo = os.getenv(key='DOCKER_REPO')
-        self.docker_sleep = os.getenv(key='DOCKER_SLEEP', default=60)
+        self.docker_sleep = int(os.getenv(key='DOCKER_SLEEP', default=60))
         self.docker_tag = ''
         self.docker_tags = os.getenv(key='TAGS', default='latest').split(' ')
         self.env_vars = os.getenv(key='ENV_VARS', default=None)
