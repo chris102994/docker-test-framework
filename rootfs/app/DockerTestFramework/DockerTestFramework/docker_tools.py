@@ -68,7 +68,7 @@ class DockerTools:
             command = 'apk info -v|sort'
         elif 'debian' in self.data.docker_tag or 'ubuntu' in self.data.docker_tag:
             command = 'apt list|sort'
-        self.packages = self.container.exec_run(command).decode('utf-8')
+        self.packages = self.container.exec_run(command)[1].decode('utf-8')
 
         self.data.tag_data.append({
             'tag': self.data.docker_tag,
