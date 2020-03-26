@@ -37,7 +37,10 @@ RUN	echo "##### Downloading Build Dependencies #####" && \
 			google-chrome-stable && \
 	echo "##### Downloading pip Packages #####" && \
 		python3 -m pip install -r /app/DockerTestFramework/requirements.txt && \
+	echo "##### Making Directories #####" && \
+		mkdir -p /workspace && \
 	echo "##### Cleanup #####" && \
 		rm-pkg build-dependencies
 ENV PYTHONPATH=/app/DockerTestFramework/
+VOLUME	   ["/workspace"]
 ENTRYPOINT ["/app/dtf-wrapper.sh"]

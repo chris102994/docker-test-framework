@@ -24,13 +24,14 @@ class TemplateTools:
         with open('{}/data/template.md'.format(self.data.pwd)) as file:
             template = Template(file.read())
         markdown_template = template.render(
-            tag_data=self.data.tag_data,
-            test_report=self.data.test_report,
             docker_name=self.data.docker_name,
             git_version=self.data.git_version,
             gui=self.data.gui,
+            image='{}/{}'.format(self.data.docker_repo, self.data.docker_name),
             report_status='{}/{} Passed'.format(passed_tests, total_tests),
-            image='{}/{}'.format(self.data.docker_repo, self.data.docker_name)
+            shell_check=self.data.shell_check,
+            tag_data=self.data.tag_data,
+            test_report=self.data.test_report
         )
 
         with open('{}/report.md'.format(self.data.out_dir), 'w') as file:

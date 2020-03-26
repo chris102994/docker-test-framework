@@ -6,6 +6,21 @@
 | ----------------------- | --- |{% for test in test_report %}
 | {{ test[0] }} | {{ test[1] }} |{% endfor %}
 
+<div data-role="main" class="ui-content">
+<div data-role="collapsible"><h1>ShellCheck Results</h1><p>
+{% for test in shell_check %}
+<div data-role="collapsible"><h1>File: {{ test[0] }}</h1>
+<p>
+<section markdown="1"> 
+
+```
+{{ test[1] }}
+```
+
+</p></div>
+{% endfor %}
+</p></div></div>
+
 <main>
 {% for container in tag_data %}
 <section markdown="1">
@@ -15,28 +30,23 @@
 {% endif %}
 ### Build Version: {{ container["git_version"] }}
 
-### Logs
-
-<details><summary>Expand</summary>
-<p>
+<div data-role="collapsible"><h1>Logs</h1><p>
 
 ```
 {{ container["logs"] }}
 ```
-</p>
-</details>
 
-### Package info
+</p></div>
 
-<details><summary>Expand</summary>
-<p>
+
+<div data-role="collapsible"><h1>Package Info</h1><p>
 
 ```
 {{ container["packages"] }}
 ```
 
-</p>
-</details>
+</p></div>
+
 </section>
 {% endfor %}
 </main>

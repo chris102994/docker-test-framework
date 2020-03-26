@@ -23,6 +23,7 @@ class ENVars:
     protocol: str
     pwd: str
     screenshot_name: str
+    shell_check: []
     ssl: str
     tag_data: []
     test_report: []
@@ -43,6 +44,7 @@ class ENVars:
         self.port = os.getenv(key='PORT', default='5700')
         self.pwd = os.path.dirname(os.path.realpath(__file__))
         self.out_dir = 'containers/{}/{}'.format(self.docker_name, self.git_version)
+        self.shell_check = []
         self.ssl = os.getenv(key='SSL', default='False').lower()
         if 'true' in self.ssl:
             self.protocol = 'https'

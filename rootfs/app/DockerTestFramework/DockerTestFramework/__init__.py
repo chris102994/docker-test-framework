@@ -3,7 +3,9 @@ from DockerTestFramework.data_classes import ENVars
 from DockerTestFramework.docker_tools import DockerTools
 from DockerTestFramework.git_tools import GitTools
 from DockerTestFramework.selenium_tools import SeleniumTools
+from DockerTestFramework.shellcheck_tools import ShellCheckTools
 from DockerTestFramework.template_tools import TemplateTools
+
 
 def main():
     data = ENVars()
@@ -32,12 +34,16 @@ def main():
             data.log_result(name='Container tag {} doesn\'t exist'.format(data.docker_tag), value='FAIL')
             continue
 
+    '''Perform the Shell Check on all files mounted in /workspace'''
+    shell_check = ShellCheckTools(data)
+    shell_check.test_scripts()
+
     '''Generate the report'''
     template = TemplateTools(data)
     template.generate_report()
 
-    git = GitTools(data)
-    git.update_ci_repo()
+    '''git = GitTools(data)
+    git.update_ci_repo()'''
 
 
 if __name__ == "__main__":
