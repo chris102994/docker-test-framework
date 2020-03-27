@@ -4,8 +4,8 @@
 [![Build Status](https://travis-ci.com/chris102994/docker-test-framework.svg?branch=master)](https://travis-ci.com/chris102994/docker-test-framework)
 [![Microbadger Size & Layers](https://images.microbadger.com/badges/image/christopher102994/docker-test-framework.svg)](https://microbadger.com/images/christopher102994/docker-test-framework "Get your own image badge on microbadger.com")
 [![Image Pulls](https://img.shields.io/docker/pulls/christopher102994/docker-test-framework)](https://hub.docker.com/repository/docker/christopher102994/docker-test-framework)
- [![Ubuntu](https://images.microbadger.com/badges/version/christopher102994/docker-test-framework:latest.svg)](https://microbadger.com/images/christopher102994/docker-test-framework:latest "Get your own version badge on microbadger.com")
-
+ [![Alpine](https://images.microbadger.com/badges/version/christopher102994/docker-test-framework:latest.svg)](https://microbadger.com/images/christopher102994/docker-test-framework:latest "Microbadger info for Alpine Test Container")
+[![GitHub tag Version](https://img.shields.io/github/v/tag/chris102994/docker-test-framework?label=Version&style=plastic)](https://chris102994.github.io/containers/)
 
 
 ## Outside Packages
@@ -26,7 +26,7 @@ docker run \
 	-e PORT="5700" \
 	-e TAGS="latest, ubuntu-18-latest" \
 	-v /var/run/docker.sock:/var/run/docker.sock \
-	--restart unless-stopped \
+	-v $(pwd):/workspace \
 	christopher102994/docker-test-framework:latest
 ```
 
@@ -48,6 +48,7 @@ Container specific parameters passed at runtime. The format is `<external>:<inte
 | -e TAGS | A comma separated list of docker tags to test. |
 | -e WEB_PATH | Path after proto://ip:port to open for a screenshot. (noVNC-Default=?autoconnect=true&resize=scale) |
 | -v /var/run/docker.sock:/var/run/docker.sock | Needed for docker-in-docker testing. |
+| -v /workspace| The location of your source code. Shellcheck will happen on all bash and shell files that reside here. |
 
 
 ## Application Setup
