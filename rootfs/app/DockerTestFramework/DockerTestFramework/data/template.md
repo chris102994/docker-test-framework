@@ -21,6 +21,7 @@
 
 </p></details>
 {% endfor %}
+</p></details>
 
 <main>
 
