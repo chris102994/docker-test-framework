@@ -19,8 +19,8 @@
 {{ test[1] }}
 ```
 
-{% endfor %}
 </p></details>
+{% endfor %}
 
 <main>
 {% for container in tag_data %}
