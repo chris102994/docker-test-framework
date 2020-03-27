@@ -42,7 +42,7 @@ class ShellCheckTools:
     def find_files_to_test(self):
         for file in glob.iglob('{}/**/*'.format(self.dir), recursive=True):
             if os.path.isfile(file):
-                with open(file) as reading_file:
+                with open(file, encoding='utf-8') as reading_file:
                     '''Read the first n lines'''
                     head = reading_file.readlines()[0:self.n]
                     reading_file.close()
