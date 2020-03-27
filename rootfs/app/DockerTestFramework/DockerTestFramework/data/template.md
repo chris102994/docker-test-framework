@@ -7,6 +7,8 @@
 | {{ test[0] }} | {{ test[1] }} |{% endfor %}
 
 
+
+<main>
 <section markdown="1"> 
 
 ## ShellCheck Results
@@ -22,7 +24,7 @@
 </p></details>
 {% endfor %}
 
-<main>
+
 {% for container in tag_data %}
 
 ## {{ image }}:{{ container["tag"] }}
