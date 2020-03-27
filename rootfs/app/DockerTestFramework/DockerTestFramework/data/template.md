@@ -6,47 +6,52 @@
 | ----------------------- | --- |{% for test in test_report %}
 | {{ test[0] }} | {{ test[1] }} |{% endfor %}
 
-<div data-role="main" class="ui-content">
-<div data-role="collapsible"><h2>ShellCheck Results</h2><p>
-{% for test in shell_check %}
-<div data-role="collapsible"><h2>File: {{ test[0] }}</h2>
-<p>
+
 <section markdown="1"> 
+
+## ShellCheck Results
+
+<details><summary>Expand</summary><p>
+{% for test in shell_check %}
+<details><summary>File: {{ test[0] }}</summary><p>
 
 ```
 {{ test[1] }}
 ```
 
-</p></div>
 {% endfor %}
-</p></div></div>
+</p></details>
 
 <main>
 {% for container in tag_data %}
-<section markdown="1">
+
 ## {{ image }}:{{ container["tag"] }}
+
 {% if gui == 'true' %}
 [![{{ container["tag"] }}]({{ container["tag"] }}.png =600x*)]({{ container["tag"] }}.png)
 {% endif %}
+
 ### Build Version: {{ container["git_version"] }}
 
-<div data-role="collapsible"><h2>Logs</h2><p>
+### Logs
+
+<details><summary>Expand</summary><p>
 
 ```
 {{ container["logs"] }}
 ```
 
-</p></div>
+</p></details>
 
+### Package Info
 
-<div data-role="collapsible"><h2>Package Info</h2><p>
+<details><summary>Expand</summary><p>
 
 ```
 {{ container["packages"] }}
 ```
 
-</p></div>
-
+</p></details>
 </section>
 {% endfor %}
 </main>

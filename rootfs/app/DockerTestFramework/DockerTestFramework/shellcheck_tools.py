@@ -70,7 +70,7 @@ class ShellCheckTools:
                                               stderr=subprocess.STDOUT,
                                               shell=True).communicate()
             result = result.decode('utf-8')
-            if stderr is None and result is not None:
+            if stderr is None and result is not None and result is not '':
                 self.data.shell_check.append([file.replace('/workspace/', ''), result])
         self.data.log_result(
             name='Run shell check for: {}'.format(self.data.docker_name),
