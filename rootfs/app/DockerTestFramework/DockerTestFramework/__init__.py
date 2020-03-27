@@ -42,8 +42,9 @@ def main():
     template = TemplateTools(data)
     template.generate_report()
 
-    '''git = GitTools(data)
-    git.update_ci_repo()'''
+    '''Push the results'''
+    git = GitTools(data)
+    git.update_ci_repo()
 
 
 if __name__ == "__main__":

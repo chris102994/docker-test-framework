@@ -7,9 +7,9 @@
 | {{ test[0] }} | {{ test[1] }} |{% endfor %}
 
 <div data-role="main" class="ui-content">
-<div data-role="collapsible"><h1>ShellCheck Results</h1><p>
+<div data-role="collapsible"><h2>ShellCheck Results</h2><p>
 {% for test in shell_check %}
-<div data-role="collapsible"><h1>File: {{ test[0] }}</h1>
+<div data-role="collapsible"><h2>File: {{ test[0] }}</h2>
 <p>
 <section markdown="1"> 
 
@@ -30,7 +30,7 @@
 {% endif %}
 ### Build Version: {{ container["git_version"] }}
 
-<div data-role="collapsible"><h1>Logs</h1><p>
+<div data-role="collapsible"><h2>Logs</h2><p>
 
 ```
 {{ container["logs"] }}
@@ -39,7 +39,7 @@
 </p></div>
 
 
-<div data-role="collapsible"><h1>Package Info</h1><p>
+<div data-role="collapsible"><h2>Package Info</h2><p>
 
 ```
 {{ container["packages"] }}
