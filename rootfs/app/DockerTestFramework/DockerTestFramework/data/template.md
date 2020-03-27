@@ -7,11 +7,9 @@
 | {{ test[0] }} | {{ test[1] }} |{% endfor %}
 
 
-<section markdown="1"> 
-
 ## ShellCheck Results
 
-<details><summary>Expand</summary><p>
+<details><summary>Expand</summary><blockquote><p>
 {% for test in shell_check %}
 <details><summary>File: {{ test[0] }}</summary><p>
 
@@ -21,18 +19,15 @@
 
 </p></details>
 {% endfor %}
-</p></details>
+</blockquote></p></details>
 
 <main>
-
 {% for container in tag_data %}
-
+<section markdown="1"> 
 ## {{ image }}:{{ container["tag"] }}
-
 {% if gui == 'true' %}
 [![{{ container["tag"] }}]({{ container["tag"] }}.png =600x*)]({{ container["tag"] }}.png)
 {% endif %}
-
 ### Build Version: {{ container["git_version"] }}
 
 ### Logs
