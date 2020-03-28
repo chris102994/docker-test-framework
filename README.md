@@ -10,6 +10,9 @@
 
 ## Outside Packages
 * Built on my [base image](https://github.com/chris102994/docker-base-image)
+    * [Selenium](https://github.com/SeleniumHQ/selenium) - API that allows browser emulation with chrome webdrivers.
+    * [Jinja2](https://palletsprojects.com/p/jinja/) - Documentation template engine.
+    * [ShellCheck](https://github.com/koalaman/shellcheck) - Static analysis tool for shell scripts.
 
 ## Docker
 ```
