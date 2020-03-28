@@ -44,8 +44,13 @@ class ShellCheckTools:
             if os.path.isfile(file):
                 with open(file, encoding='utf-8') as reading_file:
                     '''Read the first n lines'''
-                    head = reading_file.readlines()[0:self.n]
-                    reading_file.close()
+                    try:
+                        head = reading_file.readlines()[0:self.n]
+                    except UnicodeDecodeError:
+                        '''This will happen on zipped objects and such.'''
+                        continue
+                    finally:
+                        reading_file.close()
                     '''Find the Shebang'''
                     new_list = list(filter(re.compile('#!').match, head))
                     if new_list:
@@ -54,6 +59,7 @@ class ShellCheckTools:
                         elif 'sh' in new_list[0]:
                             shell = 'sh'
                         else:
+                            '''If it isn't bash or shell we probably don't know what it is.'''
                             continue
                         self.to_test.append({
                             'shell': shell,
@@ -64,7 +70,10 @@ class ShellCheckTools:
         for i in self.to_test:
             shell = i['shell']
             file = i['path']
-            command = 'shellcheck --shell={} {}'.format(shell, file)
+            command = 'shellcheck ' \
+                      '--shell={} ' \
+                      '--exclude={} ' \
+                      '{}'.format(shell, 'SC2086', file)
             result, stderr = subprocess.Popen(command,
                                               stdout=subprocess.PIPE,
                                               stderr=subprocess.STDOUT,
