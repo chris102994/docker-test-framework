@@ -6,14 +6,14 @@
 | ----------------------- | --- |{% for test in test_report %}
 | {{ test[0] }} | {{ test[1] }} |{% endfor %}
 
-
 <main>
-  
- ## ShellCheck Results
+
+<section markdown="1">
  
+## ShellCheck Results
+
 <details><summary>Expand</summary><blockquote><p>
 {% for test in shell_check %}
-<section markdown="1">
 <details><summary>File: {{ test[0] }}</summary><p>
 
 ```
