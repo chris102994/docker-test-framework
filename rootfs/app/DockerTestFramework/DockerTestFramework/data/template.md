@@ -21,9 +21,9 @@
 ```
 
 </p></details>
+{% endfor %}
 </blockquote></p></details>
 </section>
-{% endfor %}
  
 {% for container in tag_data %}
 <section markdown="1">
