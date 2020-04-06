@@ -73,7 +73,7 @@ class ShellCheckTools:
             command = 'shellcheck ' \
                       '--shell={} ' \
                       '--exclude={} ' \
-                      '{}'.format(shell, 'SC2086', file)
+                      '{}'.format(shell, 'SC2086,SC1090', file)
             result, stderr = subprocess.Popen(command,
                                               stdout=subprocess.PIPE,
                                               stderr=subprocess.STDOUT,
