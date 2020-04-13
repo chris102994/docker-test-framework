@@ -14,7 +14,7 @@
 
 <details><summary>Expand</summary><blockquote><p>
 {% for test in shell_check %}
-<details><summary>File: {{ test[0] }}</summary><p>
+<details><summary>File: `{{ test[0] }}`</summary><p>
 
 ```
 {{ test[1] }}
